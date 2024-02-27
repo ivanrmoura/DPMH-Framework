@@ -1,0 +1,13 @@
+FUNCTION_BLOCK habit_block
+
+// Define input variables
+VAR_INPUT
+	habit : REAL;
+END_VAR
+
+FUZZIFY habit
+	TERM no_habit := (0, 1) (40, 1) (60, 0) ;
+	TERM is_habit := (40, 0) (60, 1) (100, 1);
+END_FUZZIFY
+
+END_FUNCTION_BLOCK
