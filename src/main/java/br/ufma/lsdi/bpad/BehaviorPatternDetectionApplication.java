@@ -8,6 +8,7 @@ import com.fatboyindustrial.gsonjavatime.Converters;
 import com.google.gson.*;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.apache.spark.sql.SparkSession;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -26,8 +27,14 @@ public class BehaviorPatternDetectionApplication {
         SpringApplication.run(BehaviorPatternDetectionApplication.class, args);
     }
 
+    @Value("${url.hadoop}")
+    private String urlHadoop;
+
     @Bean
     public SparkSession sparkSessionFactoryBean(){
+       //System.setProperty("hadoop.home.dir", "C:/fake-hadoop");
+       System.setProperty("hadoop.home.dir", urlHadoop);
+
         return SparkSession
                 .builder()
                 .appName("Detect Pattern DPMH")

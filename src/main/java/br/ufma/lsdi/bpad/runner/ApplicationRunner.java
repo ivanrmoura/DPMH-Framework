@@ -55,7 +55,7 @@ public class ApplicationRunner implements CommandLineRunner {
 
         //cleanCollectionsMongo();
 
-        //SchedulerJobInfo jobInfo = createSchendulerJob(null);
+       // SchedulerJobInfo jobInfo = createSchendulerJob(null);
 
         //schedulerJobService.saveOrUpdate(jobInfo);
 
@@ -70,12 +70,12 @@ public class ApplicationRunner implements CommandLineRunner {
     }
 
     private SchedulerJobInfo createSchendulerJob(String schendulerJobId){
+
         SchedulerJobInfo jobInfo = new SchedulerJobInfo();
 
         jobInfo.setId(schendulerJobId);
-        //jobInfo.setJobName("lucas.sociability");
-        //jobInfo.setJobGroup("lsdi");
         jobInfo.setCronJob(false);
+
         jobInfo.setJobClass(JobExecutor.class.getName());
         jobInfo.setRepeatTime(2000L);
         jobInfo.setStartDate(LocalDateTime.now());
